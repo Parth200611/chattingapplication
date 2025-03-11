@@ -1,14 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".User.UserStatus">
-
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="16dp"
+        android:text="ViBEZ Stories"
+        android:textColor="@color/lavender"
+        android:textStyle="bold"
+
+        android:textSize="24dp"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Share Your Moments, Vibe Together!"
+        android:textColor="#B4B3B3"
+        android:layout_marginBottom="6dp"
+        android:textSize="14dp"
+
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="3dp"
+        android:padding="12dp"
+        android:layout_gravity="center_vertical"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/ivImage"
+            android:src="@drawable/baseline_camera_alt_24"
+            android:scaleType="centerCrop"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Add Status"
+            android:textColor="@color/lavender"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:textSize="18dp"
+
+            />
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:text="Others ViBEZ"
+        android:textColor="@color/lavender"
+        android:textStyle="bold"
+
+        android:textSize="24dp"
+
+        />
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/rvList"
+        android:layout_marginTop="6dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:text="No Status"
+        android:textColor="@color/gray"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:id="@+id/tvNoStattus"
 
-</FrameLayout>
+        />
+
+
+
+
+</LinearLayout>

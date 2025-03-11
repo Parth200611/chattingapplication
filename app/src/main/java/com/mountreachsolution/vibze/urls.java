@@ -17,5 +17,8 @@ public class urls {
     public static String SEND_MESSAGE=address+"send_message.php";
     public static String FETCH_MESSAGES=address+"fetch_messages.php";
     public static String upload_image=address+"upload_image.php";
+    public static String uplodestatus=address+"uplodestatus.php";
+    public static String insertdatastatus=address+"stus.php";
+    public static String getStatus=address+"getStatus.php";
 
 }
