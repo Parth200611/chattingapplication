@@ -1,14 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".User.UserHome">
+    android:orientation="vertical"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="16dp"
+        android:text="All Your Friends Are Here"
+        android:textColor="@color/lavender"
+        android:textStyle="bold"
+
+        android:textSize="24dp"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="start texting with your family and friends!!"
+        android:textColor="#B4B3B3"
+        android:layout_marginBottom="6dp"
+        android:textSize="14dp"
+
+        />
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search by username"
+        android:iconifiedByDefault="false"
+        android:background="@drawable/etback"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16sp"
+        android:layout_marginEnd="16sp"
+        android:layout_marginTop="10dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rvLsit"
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="No Friend"
+        android:textColor="#ABB1B6"
+        android:textStyle="bold"
+        android:textSize="28dp"
+        android:id="@+id/tvNoRequest"
+        android:gravity="center"
+        android:visibility="gone"
 
-</FrameLayout>
+        />
+
+
+</LinearLayout>
