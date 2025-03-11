@@ -3,6 +3,7 @@ package com.mountreachsolution.vibze.User;
 import static android.app.Activity.RESULT_OK;
 import static android.content.Context.MODE_PRIVATE;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -62,6 +63,7 @@ public class UserProfil extends Fragment {
     private  int pick_image_request=789;
 
     private static final int PICK_IMAGE_REQUEST_PASS = 1;
+    ProgressDialog  progressDialog;
 
 
 
@@ -100,6 +102,8 @@ public class UserProfil extends Fragment {
                 logoutUser();
             }
         });
+        progressDialog=new ProgressDialog(getActivity());
+        progressDialog.show();
         getData();
         return view;
     }
@@ -157,6 +161,7 @@ public class UserProfil extends Fragment {
                                 .skipMemoryCache(true)
                                 .error(R.drawable.baseline_person_24)// Resize the image to 800x800 pixels
                                 .into(profileImage);
+                        progressDialog.dismiss();
                     }
 
                 } catch (JSONException e) {
