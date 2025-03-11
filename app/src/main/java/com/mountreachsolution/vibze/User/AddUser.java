@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -61,6 +62,8 @@ public class AddUser extends AppCompatActivity {
         setContentView(R.layout.activity_add_user);
         SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         username = sharedPreferences.getString("username", "Guest");
+        getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.lavender));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.white));
         rvList = findViewById(R.id.rvLsit);
         tvNoRequest = findViewById(R.id.tvNoRequest);
         searchView = findViewById(R.id.searchView);
