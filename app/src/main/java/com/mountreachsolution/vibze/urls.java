@@ -6,4 +6,6 @@ public class urls {
     public static String login=address+"login.php";
     public static String Profildata=address+"Profildata.php";
     public static String Profilimage=address+"Profilimage.php";
+    public static String getAllUser=address+"GetAllUser.php";
+    public static String removeuserA=address+"removeuserA.php";
 }

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        android:layout_margin="10sp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp"
+            >
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/cvImage"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ll"
+                android:layout_toEndOf="@id/cvImage"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="6dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="21sp"
+                    android:id="@+id/tvUsername"
+                    />
+            </LinearLayout>  <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll1"
+            android:layout_toEndOf="@id/cvImage"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/ll"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name:"
+
+                />  <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:id="@+id/tvName"
+            android:layout_marginStart="2dp"
+
+            />
+        </LinearLayout><LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll2"
+            android:layout_toEndOf="@id/cvImage"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/ll1"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile:"
+
+                />  <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:id="@+id/tvMobile"
+            android:layout_marginStart="2dp"
+
+            />
+        </LinearLayout><LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll3"
+            android:layout_toEndOf="@id/cvImage"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/ll2"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email:"
+
+                />  <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:id="@+id/tvEmail"
+            android:layout_marginStart="2dp"
+
+            />
+        </LinearLayout><LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll4"
+            android:layout_toEndOf="@id/cvImage"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/ll3"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender:"
+
+                />  <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:id="@+id/tvgender"
+            android:layout_marginStart="2dp"
+
+            />
+        </LinearLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll4"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/lavender"
+                android:text="Remove User"
+                android:textColor="@color/white"
+                android:id="@+id/btnRemoveuser"
+                />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

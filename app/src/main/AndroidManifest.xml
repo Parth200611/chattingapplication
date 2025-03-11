@@ -17,10 +17,12 @@
             android:exported="false" />
         <activity
             android:name=".Admin.AdminHomepage"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/showactionbar"/>
         <activity
             android:name=".User.UserHomepage"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/showactionbar"/>
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
