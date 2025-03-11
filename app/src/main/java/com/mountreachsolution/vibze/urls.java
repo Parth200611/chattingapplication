@@ -14,5 +14,8 @@ public class urls {
     public static String ACCEPT_FRIEND_REQUEST=address+"accept_friend_request.php";
     public static String REJECT_FRIEND_REQUEST=address+"reject_friend_request.php";
     public static String Friends=address+"get_friends.php";
+    public static String SEND_MESSAGE=address+"send_message.php";
+    public static String FETCH_MESSAGES=address+"fetch_messages.php";
+    public static String upload_image=address+"upload_image.php";
 
 }

@@ -57,23 +57,7 @@ public class UserHome extends Fragment {
         fetchFriends(); // Fetch friend list
 
         // Enable search functionality
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                if (adapter != null) {
-                    adapter.getFilter().filter(query);
-                }
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                if (adapter != null) {
-                    adapter.getFilter().filter(newText);
-                }
-                return false;
-            }
-        });
 return view;
     }
 
@@ -102,7 +86,7 @@ return view;
                             } else {
                                 tvNoRequest.setVisibility(View.GONE);
                                 rvList.setVisibility(View.VISIBLE);
-                                adapter = new FriendListAdapter(friendList);
+                                adapter = new FriendListAdapter(getActivity(),friendList);
                                 rvList.setAdapter(adapter);
                             }
 

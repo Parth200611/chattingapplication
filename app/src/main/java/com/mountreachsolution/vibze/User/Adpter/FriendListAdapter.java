@@ -1,28 +1,26 @@
 package com.mountreachsolution.vibze.User.Adpter;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.mountreachsolution.vibze.R;
-
-import java.util.ArrayList;
+import com.mountreachsolution.vibze.User.ChatActivity;
 import java.util.List;
 
-public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.ViewHolder> implements Filterable {
+public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.ViewHolder> {
     private List<String> friendList;
-    private List<String> friendListFull; // Copy of the full list for filtering
+    private Activity context;
 
-    public FriendListAdapter(List<String> friendList) {
+    public FriendListAdapter(Activity context, List<String> friendList) {
+        this.context = context;
         this.friendList = friendList;
-        this.friendListFull = new ArrayList<>(friendList); // Copy for filtering
     }
 
     @NonNull
@@ -34,7 +32,15 @@ public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull FriendListAdapter.ViewHolder holder, int position) {
-        holder.tvFriendUsername.setText(friendList.get(position));
+        String username = friendList.get(position);
+        holder.tvFriendUsername.setText(username);
+
+        // Open chat page when clicking on a friend
+        holder.card.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ChatActivity.class);
+            intent.putExtra("username", username);
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -52,38 +58,4 @@ public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.Vi
             card = itemView.findViewById(R.id.Card);
         }
     }
-
-    // Enable filtering for search functionality
-    @Override
-    public Filter getFilter() {
-        return friendFilter;
-    }
-
-    private final Filter friendFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            List<String> filteredList = new ArrayList<>();
-            if (constraint == null || constraint.length() == 0) {
-                filteredList.addAll(friendListFull); // Show full list when search is empty
-            } else {
-                String filterPattern = constraint.toString().toLowerCase().trim();
-                for (String friend : friendListFull) {
-                    if (friend.toLowerCase().contains(filterPattern)) {
-                        filteredList.add(friend);
-                    }
-                }
-            }
-            FilterResults results = new FilterResults();
-            results.values = filteredList;
-            results.count = filteredList.size();
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            friendList.clear();
-            friendList.addAll((List) results.values);
-            notifyDataSetChanged();
-        }
-    };
 }

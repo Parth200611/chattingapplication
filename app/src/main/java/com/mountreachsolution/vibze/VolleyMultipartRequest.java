@@ -184,7 +184,7 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
         private byte[] content;
         private String type;
 
-        public DataPart() {
+        public DataPart(String image, byte[] imageBytes, String contentType) {
         }
 
         public DataPart(String name, byte[] data) {
