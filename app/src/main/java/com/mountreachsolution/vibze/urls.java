@@ -10,4 +10,5 @@ public class urls {
     public static String removeuserA=address+"removeuserA.php";
     public static String AddUserRequest=address+"getAddUser.php";
     public static String SEND_FRIEND_REQUEST=address+"addRequest.php";
+    public static String GET_FRIEND_REQUESTS=address+"getRequested.php";
 }
