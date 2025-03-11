@@ -1,6 +1,7 @@
 package com.mountreachsolution.vibze.User.Adpter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.mountreachsolution.vibze.R;
 import com.mountreachsolution.vibze.User.POJO.POJOSTATUS;
+import com.mountreachsolution.vibze.User.StatusView;
 import com.mountreachsolution.vibze.urls;
 
 import java.util.List;
@@ -43,6 +45,14 @@ public class ADPTERSTATUS extends RecyclerView.Adapter<ADPTERSTATUS.ViewHolder> 
                 .skipMemoryCache(true)
                 .error(R.drawable.baseline_person_24)// Resize the image to 800x800 pixels
                 .into(holder.ivImage);
+        holder.ivImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(activity, StatusView.class);
+                i.putExtra("image",obj.getImage());
+                activity.startActivity(i);
+            }
+        });
 
 
     }

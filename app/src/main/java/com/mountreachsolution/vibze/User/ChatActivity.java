@@ -64,6 +64,14 @@ public class ChatActivity extends AppCompatActivity {
         etMessage = findViewById(R.id.etMessage);
         btnSend = findViewById(R.id.btnSend);
         btnSendImage = findViewById(R.id.btnSendImage);
+        rvChat.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                if (bottom < oldBottom) {  // Keyboard opened
+                    rvChat.postDelayed(() -> rvChat.scrollToPosition(chatList.size() - 1), 100);
+                }
+            }
+        });
 
         // Get the receiver's username from Intent
         receiverUsername = getIntent().getStringExtra("username");

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     >
 
     <!-- Username section with red background -->
@@ -29,7 +30,9 @@
         android:id="@+id/rvChat"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:overScrollMode="never"/>
+
 
     <!-- Message input and send buttons -->
     <LinearLayout
