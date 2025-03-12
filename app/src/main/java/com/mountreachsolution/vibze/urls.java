@@ -25,5 +25,7 @@ public class urls {
     public static String groupfetch=address+"groupfetch.php";
     public static String groupsend=address+"sendgroupmessage.php";
     public static String grouprecive=address+"fetchgroupme.php";
+    public static String upload_images=address+"upload_images.php";
+
 
 }
