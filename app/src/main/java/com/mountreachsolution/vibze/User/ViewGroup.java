@@ -1,8 +1,11 @@
 package com.mountreachsolution.vibze.User;
 
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,7 +52,12 @@ public class ViewGroup extends AppCompatActivity {
         setContentView(R.layout.activity_view_group);
 
         // Set status and navigation bar colors
-        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.lavender));
+        Window window = getWindow();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.lavender));
+        }
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
 
         // Retrieve logged-in username from SharedPreferences

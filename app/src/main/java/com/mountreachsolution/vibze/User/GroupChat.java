@@ -1,8 +1,11 @@
 package com.mountreachsolution.vibze.User;
 
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -52,7 +55,12 @@ public class GroupChat extends AppCompatActivity {
        groupname=getIntent().getStringExtra("Groupname");
         SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         username = sharedPreferences.getString("username", "Guest");
-        getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.lavender));
+        Window window = getWindow();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.lavender));
+        }
         getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.white));
         rvChat = findViewById(R.id.rvChat);
         etMessage = findViewById(R.id.etMessage);

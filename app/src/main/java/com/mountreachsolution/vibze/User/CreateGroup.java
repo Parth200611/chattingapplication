@@ -1,14 +1,18 @@
 package com.mountreachsolution.vibze.User;
 
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -60,6 +64,12 @@ public class CreateGroup extends AppCompatActivity {
         edtGroupName = findViewById(R.id.edtGroupName);
         recyclerViewUsers = findViewById(R.id.recyclerViewUsers);
         btnCreateGroup = findViewById(R.id.btnCreateGroup);
+        Window window = getWindow();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.lavender));
+        }
 
         recyclerViewUsers.setLayoutManager(new LinearLayoutManager(this));
 

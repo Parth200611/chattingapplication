@@ -2,7 +2,10 @@ package com.mountreachsolution.vibze.User;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,7 +50,12 @@ public class RequestPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_request_page);
-        getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.lavender));
+        Window window = getWindow();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.lavender));
+        }
         getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.white));
 
         rvList = findViewById(R.id.rvLsit);
