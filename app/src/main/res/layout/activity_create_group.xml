@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginStart="16dp"
-        android:text="Add User"
+        android:text="Create Group"
         android:textColor="@color/lavender"
         android:textStyle="bold"
 

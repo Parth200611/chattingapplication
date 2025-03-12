@@ -22,5 +22,6 @@ public class urls {
     public static String getStatus=address+"getStatus.php";
     public static String user1=address+"user.php";
     public static String cretegroupp=address+"cretegroupp.php";
+    public static String groupfetch=address+"groupfetch.php";
 
 }
