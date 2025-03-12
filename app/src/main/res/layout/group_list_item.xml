@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:elevation="4dp"
         android:radius="8dp"
+        android:id="@+id/card"
        >
 
         <TextView

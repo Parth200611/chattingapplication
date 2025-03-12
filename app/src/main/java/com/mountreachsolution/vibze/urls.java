@@ -1,7 +1,7 @@
 package com.mountreachsolution.vibze;
 
 public class urls {
-    public static String address="http://192.168.1.4:80/vibez/";
+    public static String address="http://192.168.1.2:80/vibez/";
     public static String userregister=address+"userregister.php";
     public static String login=address+"login.php";
     public static String Profildata=address+"Profildata.php";
@@ -23,5 +23,7 @@ public class urls {
     public static String user1=address+"user.php";
     public static String cretegroupp=address+"cretegroupp.php";
     public static String groupfetch=address+"groupfetch.php";
+    public static String groupsend=address+"sendgroupmessage.php";
+    public static String grouprecive=address+"fetchgroupme.php";
 
 }
