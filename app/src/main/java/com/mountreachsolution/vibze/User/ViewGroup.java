@@ -63,7 +63,7 @@ public class ViewGroup extends AppCompatActivity {
         groupAdapter = new GroupAdapter(groupList, ViewGroup.this);
         recyclerView.setAdapter(groupAdapter);
 
-        fetchGroups("Parth@321");
+        fetchGroups(username);
     }
 
 
