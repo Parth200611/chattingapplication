@@ -18,6 +18,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".User.ViewGroup"
+            android:exported="false" />
+        <activity
+            android:name=".User.CreateGroup"
+            android:exported="false" />
+        <activity
             android:name=".User.StatusView"
             android:exported="false" />
         <activity

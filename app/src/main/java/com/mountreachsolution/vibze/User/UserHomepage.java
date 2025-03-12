@@ -87,6 +87,14 @@ BottomNavigationView bottomNavigationView;
             Intent i = new Intent(UserHomepage.this, AddUser.class);
             startActivity(i);
 
+        }else if (item.getItemId()==R.id.caretegroup){
+            Intent i = new Intent(UserHomepage.this, CreateGroup.class);
+            startActivity(i);
+
+        }else if (item.getItemId()==R.id.ViewGroup){
+            Intent i = new Intent(UserHomepage.this, ViewGroup.class);
+            startActivity(i);
+
         }
 
         return true;
