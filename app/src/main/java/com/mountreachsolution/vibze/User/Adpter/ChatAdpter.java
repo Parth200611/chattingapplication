@@ -30,11 +30,13 @@ public class ChatAdpter extends RecyclerView.Adapter<ChatAdpter.ViewHolder> {
         return new ViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull ChatAdpter.ViewHolder holder, int position) {
         Message message = messageList.get(position);
         holder.tvMessage.setText(message.getMessage());
         holder.tvTimestamp.setText(message.getTimestamp());
+
 
         // Align messages based on sender
         if (message.getSenderId().equals(currentUserId)) {
