@@ -161,6 +161,7 @@ public class ChatActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(NetworkResponse response) {
                         Toast.makeText(ChatActivity.this, "Image sent successfully", Toast.LENGTH_SHORT).show();
+                        refreshActivity();
                     }
                 },
                 new Response.ErrorListener() {
@@ -292,4 +293,9 @@ public class ChatActivity extends AppCompatActivity {
             queue.add(request);
         }
     }
+    public void refreshActivity() {
+        finish();  // Finish the current activity
+        startActivity(getIntent()); // Restart the activity
+    }
+
 }

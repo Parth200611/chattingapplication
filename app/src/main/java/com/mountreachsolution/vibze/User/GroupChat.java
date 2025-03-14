@@ -164,6 +164,7 @@ public class GroupChat extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             if (jsonObject.getBoolean("success")) {
                                 etMessage.setText("");
+
                                 fetchMessages(); // Refresh chat
                             } else {
                                 Toast.makeText(GroupChat.this, "Failed to send message", Toast.LENGTH_SHORT).show();
@@ -220,6 +221,7 @@ public class GroupChat extends AppCompatActivity {
                     @Override
                     public void onResponse(NetworkResponse response) {
                         Toast.makeText(GroupChat.this, "Image sent successfully", Toast.LENGTH_SHORT).show();
+                        refreshActivity();
                     }
                 },
                 new Response.ErrorListener() {
@@ -260,6 +262,11 @@ public class GroupChat extends AppCompatActivity {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
+    }
+
+    public void refreshActivity() {
+        finish();  // Finish the current activity
+        startActivity(getIntent()); // Restart the activity
     }
 
 
