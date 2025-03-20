@@ -1,5 +1,6 @@
 package com.mountreachsolution.vibze.User;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -32,6 +33,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.mountreachsolution.vibze.R;
 
 
@@ -55,6 +60,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cz.msebera.android.httpclient.Header;
+
 public class ChatActivity extends AppCompatActivity {
 
     private TextView tvUsername;
@@ -69,6 +76,8 @@ public class ChatActivity extends AppCompatActivity {
     Uri filepath;
     private Bitmap bitmap;
     ChatAdapter adapter;
+    ImageButton btnCall;
+    String Rnumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +89,7 @@ public class ChatActivity extends AppCompatActivity {
         etMessage = findViewById(R.id.etMessage);
         btnSend = findViewById(R.id.btnSend);
         btnSendImage = findViewById(R.id.btnSendImage);
+        btnCall = findViewById(R.id.btnCall);
         Window window = getWindow();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -107,6 +117,15 @@ public class ChatActivity extends AppCompatActivity {
         // Set chat header
         tvUsername.setText(receiverUsername);
 
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                makePhoneCall();
+            }
+        });
+
+        getData();
+
         // Initialize RecyclerView
         chatList = new ArrayList<>();
         adapter = new ChatAdapter(chatList, senderUsername);
@@ -133,6 +152,13 @@ public class ChatActivity extends AppCompatActivity {
 
 
     }
+
+    private void makePhoneCall() {
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+        callIntent.setData(Uri.parse("tel:" + Rnumber));
+        startActivity(callIntent);
+    }
+
     private void SelectUserProfileImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -296,6 +322,40 @@ public class ChatActivity extends AppCompatActivity {
     public void refreshActivity() {
         finish();  // Finish the current activity
         startActivity(getIntent()); // Restart the activity
+    }
+    private void getData() {
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        params.put("username",receiverUsername);
+        client.post(urls.Profildata,params,new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                try {
+                    JSONArray jsonArray = response.getJSONArray("getProfildata");
+                    for (int i=0;i<jsonArray.length();i++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String name=jsonObject.getString("name");
+                        Rnumber=jsonObject.getString("mobile");
+                        String gender=jsonObject.getString("gender");
+                        String email=jsonObject.getString("email");
+                        String image=jsonObject.getString("image");
+                        String usertype=jsonObject.getString("usertype");
+
+
+                    }
+
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
     }
 
 }

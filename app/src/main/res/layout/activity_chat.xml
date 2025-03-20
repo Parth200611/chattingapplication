@@ -21,7 +21,18 @@
             android:text="Username"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:layout_weight="1"
             android:textColor="@android:color/white"/>
+        <!-- Call Button -->
+        <ImageButton
+            android:id="@+id/btnCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_add_call_24"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Call"
+            android:layout_gravity="end"
+           />
     </LinearLayout>
 
     <!-- Chat messages -->
