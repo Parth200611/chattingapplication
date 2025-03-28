@@ -3,6 +3,7 @@ package com.mountreachsolution.vibze;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -114,28 +115,28 @@ public class LoginActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
                 try {
+                    Log.d("LoginResponse", response.toString()); // Log JSON response
+
                     String success = response.getString("success");
-                    String userType = response.getString("usertype"); // Assuming your PHP response sends userType
 
                     if (success.equals("1")) {
-                        // Save login details in SharedPreferences
+                        String userType = response.optString("usertype", "user"); // Use optString to avoid errors
+
                         SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("username", user);
-                        editor.putString("userType", userType);
-                        editor.putBoolean("isLoggedIn", true); // Mark user as logged in
+                        editor.putString("userType", "user");
+                        editor.putBoolean("isLoggedIn", true);
                         editor.apply();
 
                         Toast.makeText(LoginActivity.this, "Welcome Back!", Toast.LENGTH_SHORT).show();
                         checkUserType(user);
-
                     } else {
                         Toast.makeText(LoginActivity.this, "Incorrect Username and Password", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
-                    throw new RuntimeException(e);
+                    e.printStackTrace();
                 }
-
             }
 
             @Override
