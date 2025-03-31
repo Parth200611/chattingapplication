@@ -28,6 +28,7 @@ public class urls {
     public static String upload_images=address+"UPLODEIMAGE.php";
     public static String fetch=address+"fe.php";
     public static String groupimage=address+"groupimage.php";
+    public static String updatePassword=address+"updatePassword.php";
 
 
 
