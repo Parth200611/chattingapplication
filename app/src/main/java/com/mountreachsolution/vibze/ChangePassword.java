@@ -1,5 +1,6 @@
 package com.mountreachsolution.vibze;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -77,6 +78,8 @@ public class ChangePassword extends AppCompatActivity {
                         String message = jsonObject.getString("message");
 
                         Toast.makeText(ChangePassword.this, message, Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(ChangePassword.this,LoginActivity.class);
+                        startActivity(i);
                     } catch (JSONException e) {
                         e.printStackTrace();
                         Toast.makeText(ChangePassword.this, "Error parsing response", Toast.LENGTH_SHORT).show();
